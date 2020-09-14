@@ -1,0 +1,8 @@
+# files
+*.swp
+coverage.html
+coverage.out
+
+# dirs
+vendor/
+bin/

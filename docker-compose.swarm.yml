@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  ws-backend:
+    image: golang:1.15.2-buster
+    working_dir: /app
+    command: go run main.go
+    healthcheck:
+      test: curl http://localhost:80/healthcheck | grep "uptime"
+      interval: 5s
+      timeout: 5s
+    environment:
+      HTTP_SERVER_ADDR: ":80"
+    volumes:
+      - ./:/app
+
+  nginx:
+    image: nginx:1.19.2
+    volumes:
+      - ./docker/nginx/ws-backend.swarm.conf:/etc/nginx/conf.d/00-websockets.conf:ro
+    ports:
+      - 8080:8080
