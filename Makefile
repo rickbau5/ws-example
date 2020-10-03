@@ -1,5 +1,5 @@
 BIN ?= bin/ws-example
-GOMOD_MODE ?= vendor
+GO_MOD_MODE ?= vendor
 GOLANG_CI_LINT_VERSION ?= v1.31
 
 .PHONY: all
